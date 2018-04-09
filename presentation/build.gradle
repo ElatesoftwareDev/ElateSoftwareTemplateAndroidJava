@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+def versionMajor = 0
+def versionMinor = 0
+def versionPatch = 0
+def versionBuild = 1
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.elatesoftware.elatesoftwaretemplate"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "elatesoftware_template_${variant.versionName}_${variant.name}.apk"
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //modules
+    implementation project(':data')
+
+    //design
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //mvp
+    implementation 'com.arello-mobile:moxy:1.5.3'
+    implementation 'com.arello-mobile:moxy-app-compat:1.5.3'
+    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
+
+    //dagger
+    implementation 'com.google.dagger:dagger:2.14.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
+
+    //rx
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    //butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+}
