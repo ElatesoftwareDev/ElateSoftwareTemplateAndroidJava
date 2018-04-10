@@ -5,8 +5,13 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.elatesoftware.elatesoftwaretemplate.R;
 import com.elatesoftware.elatesoftwaretemplate.base.BaseActivity;
+import com.elatesoftware.elatesoftwaretemplate.di.Injector;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -20,10 +25,18 @@ public class AuthByEmailActivity extends BaseActivity implements AuthByEmailView
 
     @InjectPresenter
     AuthByEmailPresenter presenter;
+    @Inject
+    Provider<AuthByEmailPresenter> presenterProvider;
+
+    @ProvidePresenter
+    AuthByEmailPresenter providePresenter() {
+        return presenterProvider.get();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Injector.getInstance().getAppComponent().inject(this);
         setContentView(R.layout.activity_auth_by_email);
     }
 
