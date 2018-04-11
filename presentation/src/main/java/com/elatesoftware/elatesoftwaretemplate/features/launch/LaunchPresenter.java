@@ -5,6 +5,7 @@ import android.content.Context;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.elatesoftware.domain.interactors.LaunchInteractor;
+import com.elatesoftware.elatesoftwaretemplate.di.Injector;
 import com.elatesoftware.elatesoftwaretemplate.di.scopeannotations.PerActivity;
 import com.elatesoftware.elatesoftwaretemplate.features.authemail.AuthByEmailActivity;
 
@@ -39,5 +40,11 @@ public class LaunchPresenter extends MvpPresenter<LaunchView> {
         } else {
             getViewState().startNextActivity(AuthByEmailActivity.getActivityIntent(context));
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        Injector.getInstance().clearLaunchComponent();
+        super.onDestroy();
     }
 }
