@@ -15,9 +15,6 @@ public class TemplateApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Injector.getInstance().initializeAppComponent(this);
-
-        //это для разруливания презенторов
-
         MvpFacade.init();
     }
 

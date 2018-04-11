@@ -11,7 +11,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
-@Module(includes = AppModule.AppAbstractModule.class)
+@Module
 public class AppModule {
 
     private final Context appContext;
@@ -24,15 +24,5 @@ public class AppModule {
     @Singleton
     Context provideContext() {
         return appContext;
-    }
-
-    //todo зачем репоситорий тут
-    @Module
-    public interface AppAbstractModule {
-
-        @Binds
-        @Singleton
-        IRepository provideIRepository(Repository repository);
-
     }
 }

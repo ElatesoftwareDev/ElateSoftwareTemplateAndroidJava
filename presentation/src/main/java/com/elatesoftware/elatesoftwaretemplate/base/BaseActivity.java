@@ -1,7 +1,9 @@
 package com.elatesoftware.elatesoftwaretemplate.base;
 
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.widget.Toast;
+
+import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import butterknife.ButterKnife;
 
@@ -9,7 +11,15 @@ import butterknife.ButterKnife;
  * Created by Андрей Евтухов on 10.04.2018.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView{
+public abstract class BaseActivity extends MvpAppCompatActivity implements BaseView{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        injectComponent();
+        super.onCreate(savedInstanceState);
+    }
+
+    protected abstract void injectComponent();
 
     @Override
     public void setContentView(int layoutResID) {

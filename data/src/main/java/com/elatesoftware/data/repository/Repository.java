@@ -1,8 +1,9 @@
 package com.elatesoftware.data.repository;
 
-import com.elatesoftware.data.local.LocalRepository;
-import com.elatesoftware.data.network.NetworkRepository;
+import com.elatesoftware.data.network.api.RestApiService;
 import com.elatesoftware.domain.repository.IRepository;
+
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
@@ -12,12 +13,13 @@ import io.reactivex.Observable;
 
 public class Repository implements IRepository {
 
-    private final NetworkRepository networkRepository;
-    private final LocalRepository localRepository;
+    private final RestApiService networkRepository;
+   // private final LocalRepository localRepository;
 
-    public Repository(NetworkRepository networkRepository, LocalRepository localRepository) {
+    @Inject
+    public Repository(RestApiService networkRepository) {
         this.networkRepository = networkRepository;
-        this.localRepository = localRepository;
+    //    this.localRepository = localRepository;
     }
 
     @Override

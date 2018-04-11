@@ -1,6 +1,6 @@
 package com.elatesoftware.data.network.api;
 
-import com.elatesoftware.data.network.NetworkRepository;
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
@@ -8,11 +8,12 @@ import io.reactivex.Observable;
  * Created by Андрей Евтухов on 09.04.2018.
  */
 
-public class RestApiService implements NetworkRepository{
+public class RestApiService{
 
     private final RestApi restApi;
 
-    RestApiService(RestApi restRestApi) {
+    @Inject
+    public RestApiService(RestApi restRestApi) {
         this.restApi = restRestApi;
     }
 

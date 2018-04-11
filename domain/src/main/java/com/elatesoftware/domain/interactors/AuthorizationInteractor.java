@@ -2,8 +2,9 @@ package com.elatesoftware.domain.interactors;
 
 import com.elatesoftware.domain.usecases.AuthorizationUseCase;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 
 /**
  * Created by Андрей Евтухов on 09.04.2018.
@@ -13,7 +14,8 @@ public class AuthorizationInteractor {
 
     private final AuthorizationUseCase authorizationUseCase;
 
-    public AuthorizationInteractor(AuthorizationUseCase authorizationUseCase) {
+    @Inject
+    AuthorizationInteractor(AuthorizationUseCase authorizationUseCase) {
         this.authorizationUseCase = authorizationUseCase;
     }
 

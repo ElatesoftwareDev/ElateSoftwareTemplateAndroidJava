@@ -1,7 +1,7 @@
 package com.elatesoftware.elatesoftwaretemplate.di.components;
 
-import com.elatesoftware.elatesoftwaretemplate.authemail.AuthByEmailActivity;
 import com.elatesoftware.elatesoftwaretemplate.di.modules.AppModule;
+import com.elatesoftware.elatesoftwaretemplate.di.modules.RepositoryModule;
 import com.elatesoftware.elatesoftwaretemplate.di.modules.RestModule;
 
 import javax.inject.Singleton;
@@ -13,9 +13,10 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {AppModule.class, RestModule.class})
+@Component(modules = {AppModule.class, RepositoryModule.class, RestModule.class})
 public interface AppComponent {
 
-    void inject(AuthByEmailActivity authByEmailActivity);
+    AuthByEmailComponent plusAuthByEmailComponent();
+
 }
 

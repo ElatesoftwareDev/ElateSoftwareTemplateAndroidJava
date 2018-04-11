@@ -2,6 +2,8 @@ package com.elatesoftware.domain.usecases;
 
 import com.elatesoftware.domain.repository.IRepository;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 
 /**
@@ -12,6 +14,7 @@ public class AuthorizationUseCase {
 
     private final IRepository repository;
 
+    @Inject
     AuthorizationUseCase(IRepository repository) {
         this.repository = repository;
     }

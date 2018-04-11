@@ -1,6 +1,5 @@
 package com.elatesoftware.elatesoftwaretemplate.authemail;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -36,8 +35,12 @@ public class AuthByEmailActivity extends BaseActivity implements AuthByEmailView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Injector.getInstance().getAppComponent().inject(this);
         setContentView(R.layout.activity_auth_by_email);
+    }
+
+    @Override
+    protected void injectComponent() {
+        Injector.getInstance().plusAuthByEmailComponent().inject(this);
     }
 
     @OnClick(R.id.button_auth_email_submit)
