@@ -1,4 +1,4 @@
-package com.elatesoftware.elatesoftwaretemplate.base;
+package com.elatesoftware.elatesoftwaretemplate.features.base;
 
 import com.arellomobile.mvp.MvpView;
 

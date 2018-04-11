@@ -15,8 +15,6 @@ import dagger.Component;
 @Singleton
 @Component(modules = {AppModule.class, RepositoryModule.class, RestModule.class})
 public interface AppComponent {
-
-    AuthByEmailComponent plusAuthByEmailComponent();
-
+    LaunchComponent plusLaunchComponent();
 }
 

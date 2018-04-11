@@ -10,4 +10,6 @@ public interface IRepository {
 
     Observable<String> login(String email, String password);
 
+    boolean isAuth();
+
 }

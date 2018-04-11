@@ -26,4 +26,9 @@ public class Repository implements IRepository {
     public Observable<String> login(String email, String password) {
         return networkRepository.login(email, password);
     }
+
+    @Override
+    public boolean isAuth() {
+        return false;
+    }
 }

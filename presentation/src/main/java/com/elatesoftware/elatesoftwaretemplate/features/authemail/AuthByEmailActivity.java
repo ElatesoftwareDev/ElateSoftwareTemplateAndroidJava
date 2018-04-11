@@ -1,12 +1,14 @@
-package com.elatesoftware.elatesoftwaretemplate.authemail;
+package com.elatesoftware.elatesoftwaretemplate.features.authemail;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.elatesoftware.elatesoftwaretemplate.R;
-import com.elatesoftware.elatesoftwaretemplate.base.BaseActivity;
+import com.elatesoftware.elatesoftwaretemplate.features.base.BaseActivity;
 import com.elatesoftware.elatesoftwaretemplate.di.Injector;
 
 import javax.inject.Inject;
@@ -30,6 +32,10 @@ public class AuthByEmailActivity extends BaseActivity implements AuthByEmailView
     @ProvidePresenter
     AuthByEmailPresenter providePresenter() {
         return presenterProvider.get();
+    }
+
+    public static Intent getActivityIntent(Context context){
+        return new Intent(context, AuthByEmailActivity.class);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.elatesoftware.elatesoftwaretemplate.base;
+package com.elatesoftware.elatesoftwaretemplate.features.base;
 
 import android.os.Bundle;
 import android.widget.Toast;

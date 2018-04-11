@@ -1,6 +1,6 @@
 package com.elatesoftware.elatesoftwaretemplate.di.components;
 
-import com.elatesoftware.elatesoftwaretemplate.authemail.AuthByEmailActivity;
+import com.elatesoftware.elatesoftwaretemplate.features.authemail.AuthByEmailActivity;
 import com.elatesoftware.elatesoftwaretemplate.di.modules.AuthByEmailModule;
 import com.elatesoftware.elatesoftwaretemplate.di.scopeannotations.PerActivity;
 
