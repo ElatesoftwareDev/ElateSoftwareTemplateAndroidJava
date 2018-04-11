@@ -1,11 +1,12 @@
 package com.elatesoftware.data.repository;
 
+import com.elatesoftware.data.local.Cache;
 import com.elatesoftware.data.network.api.RestApiService;
 import com.elatesoftware.domain.repository.IRepository;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
+import io.reactivex.Completable;
 
 /**
  * Created by Андрей Евтухов on 10.04.2018.
@@ -14,21 +15,24 @@ import io.reactivex.Observable;
 public class Repository implements IRepository {
 
     private final RestApiService networkRepository;
-   // private final LocalRepository localRepository;
+    private final Cache cache;
 
     @Inject
-    public Repository(RestApiService networkRepository) {
+    Repository(RestApiService networkRepository, Cache cache) {
         this.networkRepository = networkRepository;
-    //    this.localRepository = localRepository;
+        this.cache = cache;
     }
 
     @Override
-    public Observable<String> login(String email, String password) {
-        return networkRepository.login(email, password);
+    public Completable login(final String email, final String password) {
+        return networkRepository
+                .login(email, password)
+                .doOnSuccess(cache::setToken)
+                .toCompletable();
     }
 
     @Override
     public boolean isAuth() {
-        return false;
+        return cache.getToken() != null;
     }
 }

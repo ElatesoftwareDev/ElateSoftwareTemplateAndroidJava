@@ -4,7 +4,7 @@ import com.elatesoftware.domain.usecases.AuthorizationUseCase;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
+import io.reactivex.Completable;
 
 /**
  * Created by Андрей Евтухов on 09.04.2018.
@@ -19,7 +19,7 @@ public class AuthorizationInteractor {
         this.authorizationUseCase = authorizationUseCase;
     }
 
-    public Observable<String> login(String email, String password){
+    public Completable login(String email, String password){
         return authorizationUseCase.login(email, password);
     }
 

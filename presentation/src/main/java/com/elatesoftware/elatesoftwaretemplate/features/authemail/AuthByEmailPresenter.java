@@ -29,12 +29,17 @@ public class AuthByEmailPresenter extends MvpPresenter<AuthByEmailView> {
 
     void login(String email, String password) {
         if (validateFields(email, password)) {
-            interactor.login(email, password).subscribe(s -> onSuccessLogin());
+            interactor.login(email, password).subscribe(this::onSuccessLogin,
+                    throwable -> onErrorLogin());
         }
     }
 
     private boolean validateFields(String email, String password) {
         return true;
+    }
+
+    private void onErrorLogin() {
+        getViewState().showToast("Неуспешный неуспех");
     }
 
     private void onSuccessLogin() {

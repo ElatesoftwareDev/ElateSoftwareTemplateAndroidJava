@@ -1,6 +1,6 @@
 package com.elatesoftware.domain.repository;
 
-import io.reactivex.Observable;
+import io.reactivex.Completable;
 
 /**
  * Created by Андрей Евтухов on 09.04.2018.
@@ -8,7 +8,7 @@ import io.reactivex.Observable;
 
 public interface IRepository {
 
-    Observable<String> login(String email, String password);
+    Completable login(String email, String password);
 
     boolean isAuth();
 

@@ -1,5 +1,7 @@
 package com.elatesoftware.elatesoftwaretemplate.di.modules;
 
+import com.elatesoftware.data.local.preferences.IPreferencesStorage;
+import com.elatesoftware.data.local.preferences.PreferencesStorage;
 import com.elatesoftware.data.repository.Repository;
 import com.elatesoftware.domain.repository.IRepository;
 
@@ -17,5 +19,9 @@ public interface RepositoryModule {
     @Binds
     @Singleton
     IRepository provideIRepository(Repository repository);
+
+    @Binds
+    @Singleton
+    IPreferencesStorage providePreferencesStorage(PreferencesStorage preferencesStorage);
 
 }
