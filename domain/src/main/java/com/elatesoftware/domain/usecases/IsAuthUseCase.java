@@ -13,7 +13,8 @@ public class IsAuthUseCase {
         this.repository = repository;
     }
 
-    public boolean isAuth() {
+
+    public boolean execute() {
         return repository.isAuth();
     }
 }

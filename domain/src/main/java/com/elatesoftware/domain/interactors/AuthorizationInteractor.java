@@ -1,16 +1,17 @@
 package com.elatesoftware.domain.interactors;
 
+import com.elatesoftware.domain.interactors.base.BaseInteractor;
 import com.elatesoftware.domain.usecases.AuthorizationUseCase;
 
 import javax.inject.Inject;
 
-import io.reactivex.Completable;
+import io.reactivex.observers.DisposableCompletableObserver;
 
 /**
  * Created by Андрей Евтухов on 09.04.2018.
  */
 
-public class AuthorizationInteractor {
+public class AuthorizationInteractor extends BaseInteractor {
 
     private final AuthorizationUseCase authorizationUseCase;
 
@@ -19,8 +20,8 @@ public class AuthorizationInteractor {
         this.authorizationUseCase = authorizationUseCase;
     }
 
-    public Completable login(String email, String password){
-        return authorizationUseCase.login(email, password);
+    public void login(String email, String password, DisposableCompletableObserver observer) {
+        execute(authorizationUseCase, new AuthorizationUseCase.AuthorizationData(email, password), observer);
     }
 
 }

@@ -1,6 +1,9 @@
 package com.elatesoftware.domain.usecases;
 
+import com.elatesoftware.domain.executor.ExecutionThread;
+import com.elatesoftware.domain.executor.PostExecutionThread;
 import com.elatesoftware.domain.repository.IRepository;
+import com.elatesoftware.domain.usecases.base.CompletableUseCase;
 
 import javax.inject.Inject;
 
@@ -10,16 +13,34 @@ import io.reactivex.Completable;
  * Created by Андрей Евтухов on 09.04.2018.
  */
 
-public class AuthorizationUseCase {
-
-    private final IRepository repository;
+public class AuthorizationUseCase extends CompletableUseCase<AuthorizationUseCase.AuthorizationData> {
 
     @Inject
-    AuthorizationUseCase(IRepository repository) {
-        this.repository = repository;
+    AuthorizationUseCase(IRepository repository, ExecutionThread executionThread, PostExecutionThread postExecutionThread) {
+        super(repository, executionThread, postExecutionThread);
     }
 
-    public Completable login(String email, String password){
-        return repository.login(email, password);
+    @Override
+    protected Completable buildUseCase(AuthorizationUseCase.AuthorizationData params) {
+        return repository.login(params.getEmail(), params.getPassword());
     }
+
+    public static final class AuthorizationData {
+        private final String email;
+        private final String password;
+
+        public AuthorizationData(String email, String password) {
+            this.email = email;
+            this.password = password;
+        }
+
+        String getEmail() {
+            return email;
+        }
+
+        String getPassword() {
+            return password;
+        }
+    }
+
 }
