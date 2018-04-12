@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="error_internal_error_password_or_email">Error email or password</string>
+    <string name="error_unhandled_server_error">Unhandled internal server error</string>
+    <string name="error_handling_timeout">Timeout error</string>
+
+</resources>

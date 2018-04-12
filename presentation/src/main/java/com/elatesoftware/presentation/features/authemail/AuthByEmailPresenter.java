@@ -3,10 +3,10 @@ package com.elatesoftware.presentation.features.authemail;
 import android.content.Context;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpPresenter;
 import com.elatesoftware.domain.interactors.AuthorizationInteractor;
 import com.elatesoftware.presentation.di.Injector;
 import com.elatesoftware.presentation.di.scopeannotations.PerActivity;
+import com.elatesoftware.presentation.features.base.BasePresenter;
 
 import javax.inject.Inject;
 
@@ -15,10 +15,9 @@ import io.reactivex.observers.DisposableCompletableObserver;
 /**
  * Created by Андрей Евтухов on 10.04.2018.
  */
-
 @PerActivity(AuthByEmailActivity.class)
 @InjectViewState
-public class AuthByEmailPresenter extends MvpPresenter<AuthByEmailView> {
+public class AuthByEmailPresenter extends BasePresenter<AuthByEmailView> {
 
     private final AuthorizationInteractor interactor;
     private final Context context;
@@ -39,7 +38,7 @@ public class AuthByEmailPresenter extends MvpPresenter<AuthByEmailView> {
 
                 @Override
                 public void onError(Throwable e) {
-                    onErrorLogin();
+                    handleError(e);
                 }
             });
         }

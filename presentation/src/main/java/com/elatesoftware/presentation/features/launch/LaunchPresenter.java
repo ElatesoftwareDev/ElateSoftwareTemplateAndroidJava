@@ -3,11 +3,11 @@ package com.elatesoftware.presentation.features.launch;
 import android.content.Context;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpPresenter;
 import com.elatesoftware.domain.interactors.LaunchInteractor;
 import com.elatesoftware.presentation.di.Injector;
 import com.elatesoftware.presentation.di.scopeannotations.PerActivity;
 import com.elatesoftware.presentation.features.authemail.AuthByEmailActivity;
+import com.elatesoftware.presentation.features.base.BasePresenter;
 
 import javax.inject.Inject;
 
@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 @PerActivity(LaunchActivity.class)
 @InjectViewState
-public class LaunchPresenter extends MvpPresenter<LaunchView> {
+public class LaunchPresenter extends BasePresenter<LaunchView> {
 
     private final Context context;
     private final LaunchInteractor interactor;

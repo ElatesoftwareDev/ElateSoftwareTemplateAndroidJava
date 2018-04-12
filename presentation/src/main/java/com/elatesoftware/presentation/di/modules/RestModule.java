@@ -1,6 +1,9 @@
 package com.elatesoftware.presentation.di.modules;
 
 
+import android.content.Context;
+
+import com.elatesoftware.data.errorshandling.ErrorHandlingInterceptor;
 import com.elatesoftware.data.network.api.RestApi;
 import com.elatesoftware.presentation.BuildConfig;
 import com.google.gson.Gson;
@@ -31,7 +34,7 @@ public interface RestModule {
     @Singleton
     static Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .baseUrl("http://google.com")
+                .baseUrl("http://mytasks.elatesof.w07.hoster.by/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
@@ -40,8 +43,10 @@ public interface RestModule {
 
     @Provides
     @Singleton
-    static OkHttpClient provideOkHttpClient(HttpLoggingInterceptor logging) {
+    static OkHttpClient provideOkHttpClient(HttpLoggingInterceptor logging,
+                                            ErrorHandlingInterceptor errorHandlingInterceptor) {
         return new OkHttpClient.Builder()
+                .addInterceptor(errorHandlingInterceptor)
                 .addInterceptor(logging)
                 .build();
     }
@@ -52,6 +57,12 @@ public interface RestModule {
         return new HttpLoggingInterceptor().setLevel(BuildConfig.DEBUG ?
                 HttpLoggingInterceptor.Level.BODY :
                 HttpLoggingInterceptor.Level.NONE);
+    }
+
+    @Provides
+    @Singleton
+    static ErrorHandlingInterceptor provideErrorInterceptor(Context context) {
+        return new ErrorHandlingInterceptor(context);
     }
 
     @Provides

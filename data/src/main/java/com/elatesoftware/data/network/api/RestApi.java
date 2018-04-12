@@ -1,8 +1,13 @@
 package com.elatesoftware.data.network.api;
 
-import io.reactivex.Observable;
+import com.elatesoftware.domain.models.LoginBody;
+import com.elatesoftware.domain.models.UserResponse;
 
-import retrofit2.http.GET;
+import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.Response;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -12,7 +17,10 @@ import retrofit2.http.Query;
 public interface RestApi {
 
     //возвращает типа токен
-    @GET("login")
+    @POST("api/account/login")
     Observable<String> login(@Query("email") String email, @Query("password") String password);
+
+    @POST("api/account/login")
+    Single<Response<UserResponse>> logIn(@Body LoginBody loginBody);
 
 }

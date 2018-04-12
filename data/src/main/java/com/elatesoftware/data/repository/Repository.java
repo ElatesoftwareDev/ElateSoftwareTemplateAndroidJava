@@ -27,7 +27,7 @@ public class Repository implements IRepository {
     public Completable login(final String email, final String password) {
         return networkRepository
                 .login(email, password)
-                .doOnSuccess(cache::setToken)
+               // .doOnSuccess(cache::setToken)
                 .toCompletable();
     }
 
