@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers;
 public class JobExecutor implements ExecutionThread {
 
     @Inject
-    public JobExecutor() {}
+    JobExecutor() {}
 
     @Override
     public Scheduler getScheduler() {

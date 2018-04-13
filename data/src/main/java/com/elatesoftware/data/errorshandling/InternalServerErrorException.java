@@ -2,7 +2,6 @@ package com.elatesoftware.data.errorshandling;
 
 import java.io.IOException;
 
-
 public class InternalServerErrorException extends IOException {
 
     private String internalMessage;

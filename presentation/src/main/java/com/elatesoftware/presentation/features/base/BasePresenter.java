@@ -14,18 +14,27 @@ abstract public class BasePresenter<V extends BaseView> extends MvpPresenter<V> 
 
     private ErrorHandler errorHandler;
 
+    protected abstract void clearComponent();
+
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
         errorHandler = new ErrorHandler(context, this);
     }
 
-    protected void handleError(Throwable e) {
-        errorHandler.handleError(e);
+    @Override
+    public void onDestroy() {
+        clearComponent();
+        super.onDestroy();
     }
 
     @Override
     public void showMessage(String message) {
         getViewState().showToast(message);
     }
+
+    protected void handleError(Throwable e) {
+        errorHandler.handleError(e);
+    }
+
 }

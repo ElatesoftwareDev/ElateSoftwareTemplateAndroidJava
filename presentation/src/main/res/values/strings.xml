@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">ElateSoftwareTemplate</string>
 
-
     <string name="auth_email_email_hint">Email</string>
     <string name="auth_email_password_hint">Password</string>
     <string name="auth_email_submit_text">Login</string>
+
     <string name="error_server_interaction">Server interaction error</string>
     <string name="error_unhandled_error">Unhandled error. Please contact the developer.</string>
 </resources>

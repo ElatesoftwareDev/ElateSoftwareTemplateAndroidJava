@@ -1,4 +1,4 @@
-package com.elatesoftware.domain.models;
+package com.elatesoftware.domain.entities;
 
 import com.google.gson.annotations.SerializedName;
 

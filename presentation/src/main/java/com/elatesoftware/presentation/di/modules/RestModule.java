@@ -59,12 +59,6 @@ public interface RestModule {
 
     @Provides
     @Singleton
-    static ErrorHandlingInterceptor provideErrorInterceptor(Context context) {
-        return new ErrorHandlingInterceptor(context);
-    }
-
-    @Provides
-    @Singleton
     static Gson provideGson() {
         return new GsonBuilder().setPrettyPrinting().create();
     }

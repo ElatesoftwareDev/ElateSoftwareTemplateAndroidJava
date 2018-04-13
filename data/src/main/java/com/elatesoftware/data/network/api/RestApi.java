@@ -1,7 +1,7 @@
 package com.elatesoftware.data.network.api;
 
-import com.elatesoftware.domain.models.LoginBody;
-import com.elatesoftware.domain.models.UserResponse;
+import com.elatesoftware.domain.entities.LoginBody;
+import com.elatesoftware.domain.entities.UserResponse;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;

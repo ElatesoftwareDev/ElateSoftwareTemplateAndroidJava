@@ -5,7 +5,6 @@ import android.app.Application;
 import com.elatesoftware.presentation.di.components.AppComponent;
 import com.elatesoftware.presentation.di.components.AuthByEmailComponent;
 import com.elatesoftware.presentation.di.components.DaggerAppComponent;
-import com.elatesoftware.presentation.di.components.LaunchComponent;
 import com.elatesoftware.presentation.di.components.MainComponent;
 import com.elatesoftware.presentation.di.modules.AppModule;
 
@@ -14,7 +13,6 @@ public class Injector {
     private static final Injector injector = new Injector();
 
     private AppComponent appComponent;
-    private LaunchComponent launchComponent;
     private AuthByEmailComponent authByEmailComponent;
     private MainComponent mainComponent;
 
@@ -36,8 +34,7 @@ public class Injector {
 
     public AuthByEmailComponent plusAuthByEmailComponent() {
         if (authByEmailComponent == null) {
-            plusLaunchComponent();
-            authByEmailComponent = launchComponent.plusAuthByEmailComponent();
+            authByEmailComponent = appComponent.plusAuthByEmailComponent();
         }
         return authByEmailComponent;
     }
@@ -46,21 +43,9 @@ public class Injector {
         authByEmailComponent = null;
     }
 
-    public LaunchComponent plusLaunchComponent() {
-        if (launchComponent == null) {
-            launchComponent = appComponent.plusLaunchComponent();
-        }
-        return launchComponent;
-    }
-
-    public void clearLaunchComponent() {
-        launchComponent = null;
-    }
-
     public MainComponent plusMainComponent() {
         if (mainComponent == null) {
-            plusLaunchComponent();
-            mainComponent = launchComponent.plusMainComponent();
+            mainComponent = appComponent.plusMainComponent();
         }
         return mainComponent;
     }

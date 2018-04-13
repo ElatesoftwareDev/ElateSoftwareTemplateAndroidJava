@@ -21,7 +21,6 @@ public class ErrorHandler {
         void showMessage(String message);
     }
 
-    @Inject
     public ErrorHandler(Context context, ErrorHandlerCallback errorHandlerCallback) {
         this.context = context;
         this.errorHandlerCallback = errorHandlerCallback;

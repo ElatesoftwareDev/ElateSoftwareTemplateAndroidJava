@@ -1,24 +1,25 @@
 package com.elatesoftware.presentation.features.launch;
 
+import android.content.Context;
+
 import com.arellomobile.mvp.InjectViewState;
+import com.arellomobile.mvp.MvpPresenter;
 import com.elatesoftware.domain.interactors.LaunchInteractor;
-import com.elatesoftware.presentation.di.Injector;
-import com.elatesoftware.presentation.di.scopeannotations.PerActivity;
 import com.elatesoftware.presentation.features.auth.mail.AuthByEmailActivity;
-import com.elatesoftware.presentation.features.base.BasePresenter;
 import com.elatesoftware.presentation.features.main.MainActivity;
 
 import javax.inject.Inject;
 
-@PerActivity(LaunchActivity.class)
 @InjectViewState
-public class LaunchPresenter extends BasePresenter<LaunchView> {
+public class LaunchPresenter extends MvpPresenter<LaunchView> {
 
-    final LaunchInteractor interactor;
+    private final LaunchInteractor interactor;
+    private final Context context;
 
     @Inject
-    LaunchPresenter(LaunchInteractor interactor) {
+    LaunchPresenter(LaunchInteractor interactor, Context context) {
         this.interactor = interactor;
+        this.context = context;
     }
 
     @Override
@@ -27,18 +28,18 @@ public class LaunchPresenter extends BasePresenter<LaunchView> {
         showNextActivity();
     }
 
+    @Override
+    public void onDestroy() {
+        interactor.dispose();
+        super.onDestroy();
+    }
+
+
     private void showNextActivity() {
         if (interactor.isAuth()) {
             getViewState().startNextActivity(MainActivity.getActivityIntent(context));
         } else {
             getViewState().startNextActivity(AuthByEmailActivity.getActivityIntent(context));
         }
-    }
-
-    @Override
-    public void onDestroy() {
-        Injector.getInstance().clearLaunchComponent();
-        interactor.dispose();
-        super.onDestroy();
     }
 }

@@ -24,7 +24,7 @@ public class LaunchActivity extends BaseActivity implements LaunchView {
 
     @Override
     protected void injectComponent() {
-        Injector.getInstance().plusLaunchComponent().inject(this);
+        Injector.getInstance().getAppComponent().inject(this);
     }
 
     @Override

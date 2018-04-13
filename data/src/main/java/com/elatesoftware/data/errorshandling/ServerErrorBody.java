@@ -2,14 +2,13 @@ package com.elatesoftware.data.errorshandling;
 
 import com.google.gson.annotations.SerializedName;
 
-
 class ServerErrorBody {
 
     @SerializedName("Message")
-    String message;
+    private String message;
 
     @SerializedName("Code")
-    int code;
+    private int code;
 
     public ServerErrorBody(String message, int code) {
         this.message = message;

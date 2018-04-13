@@ -14,11 +14,22 @@ import io.reactivex.observers.DisposableCompletableObserver;
 @InjectViewState
 public class AuthByEmailPresenter extends BasePresenter<AuthByEmailView> {
 
-    final AuthorizationInteractor interactor;
+    private final AuthorizationInteractor interactor;
 
     @Inject
     AuthByEmailPresenter(AuthorizationInteractor interactor) {
         this.interactor = interactor;
+    }
+
+    @Override
+    protected void clearComponent() {
+        Injector.getInstance().clearAuthByEmailComponent();
+    }
+
+    @Override
+    public void onDestroy() {
+        interactor.dispose();
+        super.onDestroy();
     }
 
     void login(String email, String password) {
@@ -43,12 +54,5 @@ public class AuthByEmailPresenter extends BasePresenter<AuthByEmailView> {
 
     private void onSuccessLogin() {
         getViewState().showToast("Success");
-    }
-
-    @Override
-    public void onDestroy() {
-        Injector.getInstance().clearAuthByEmailComponent();
-        interactor.dispose();
-        super.onDestroy();
     }
 }

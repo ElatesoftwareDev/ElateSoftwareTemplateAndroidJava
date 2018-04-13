@@ -1,5 +1,6 @@
 package com.elatesoftware.presentation.features.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -7,7 +8,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends MvpAppCompatActivity implements BaseView{
+public abstract class BaseActivity extends MvpAppCompatActivity implements BaseActivityView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,23 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements BaseV
     }
 
     @Override
-    public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    public void showActivity(Intent intent) {
+        startActivity(intent);
     }
+
+    @Override
+    public void finishActivity() {
+        finish();
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showToast(int resId) {
+        Toast.makeText(getApplicationContext(), resId, Toast.LENGTH_SHORT).show();
+    }
+
 }
