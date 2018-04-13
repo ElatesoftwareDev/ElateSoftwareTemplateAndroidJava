@@ -6,10 +6,6 @@ import com.elatesoftware.presentation.features.main.MainActivity;
 
 import dagger.Subcomponent;
 
-/**
- * Created by Андрей Евтухов on 10.04.2018.
- */
-
 @PerActivity(MainActivity.class)
 @Subcomponent(modules = MainModule.class)
 public interface MainComponent {

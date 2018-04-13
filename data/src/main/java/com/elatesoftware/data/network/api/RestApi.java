@@ -10,10 +10,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
-/**
- * Created by Андрей Евтухов on 09.04.2018.
- */
-
 public interface RestApi {
 
     //возвращает типа токен

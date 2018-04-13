@@ -10,9 +10,6 @@ import javax.inject.Singleton;
 import dagger.Binds;
 import dagger.Module;
 
-/**
- * Created by Андрей Евтухов on 11.04.2018.
- */
 @Module
 public interface RepositoryModule {
 

@@ -10,10 +10,6 @@ import com.elatesoftware.presentation.features.base.BaseActivity;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-/**
- * Created by Андрей Евтухов on 11.04.2018.
- */
-
 public class LaunchActivity extends BaseActivity implements LaunchView {
 
     @InjectPresenter

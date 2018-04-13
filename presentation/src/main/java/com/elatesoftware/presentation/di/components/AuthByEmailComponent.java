@@ -6,10 +6,6 @@ import com.elatesoftware.presentation.di.scopeannotations.PerActivity;
 
 import dagger.Subcomponent;
 
-/**
- * Created by Андрей Евтухов on 10.04.2018.
- */
-
 @PerActivity(AuthByEmailActivity.class)
 @Subcomponent(modules = AuthByEmailModule.class)
 public interface AuthByEmailComponent {

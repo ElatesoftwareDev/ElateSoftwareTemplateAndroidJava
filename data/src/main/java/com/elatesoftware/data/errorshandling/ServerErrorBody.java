@@ -2,11 +2,8 @@ package com.elatesoftware.data.errorshandling;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Андрей Евтухов on 12.04.2018.
- */
 
-public class ServerErrorBody {
+class ServerErrorBody {
 
     @SerializedName("Message")
     String message;

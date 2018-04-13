@@ -5,9 +5,6 @@ import android.content.SharedPreferences;
 
 import javax.inject.Inject;
 
-/**
- * Created by Андрей Евтухов on 11.04.2018.
- */
 
 public class PreferencesStorage implements IPreferencesStorage {
 

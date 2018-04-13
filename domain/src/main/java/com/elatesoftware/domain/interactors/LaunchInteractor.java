@@ -5,9 +5,6 @@ import com.elatesoftware.domain.usecases.IsAuthUseCase;
 
 import javax.inject.Inject;
 
-/**
- * Created by Андрей Евтухов on 09.04.2018.
- */
 
 public class LaunchInteractor extends BaseInteractor {
 

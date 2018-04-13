@@ -10,14 +10,11 @@ import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableCompletableObserver;
 
-/**
- * Created by Андрей Евтухов on 10.04.2018.
- */
 @PerActivity(AuthByEmailActivity.class)
 @InjectViewState
 public class AuthByEmailPresenter extends BasePresenter<AuthByEmailView> {
 
-    private final AuthorizationInteractor interactor;
+    final AuthorizationInteractor interactor;
 
     @Inject
     AuthByEmailPresenter(AuthorizationInteractor interactor) {

@@ -8,10 +8,6 @@ import com.elatesoftware.presentation.R;
 import com.elatesoftware.presentation.di.Injector;
 import com.elatesoftware.presentation.features.base.BaseActivity;
 
-/**
- * Created by Андрей Евтухов on 13.04.2018.
- */
-
 public class MainActivity extends BaseActivity implements MainView {
 
     public static Intent getActivityIntent(Context context){

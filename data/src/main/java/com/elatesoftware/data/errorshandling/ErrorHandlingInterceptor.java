@@ -18,9 +18,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-/**
- * Created by Андрей Евтухов on 12.04.2018.
- */
 
 public class ErrorHandlingInterceptor implements Interceptor {
 

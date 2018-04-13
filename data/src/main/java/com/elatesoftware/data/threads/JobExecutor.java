@@ -1,6 +1,5 @@
 package com.elatesoftware.data.threads;
 
-
 import com.elatesoftware.domain.executor.ExecutionThread;
 
 import javax.inject.Inject;

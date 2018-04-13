@@ -7,10 +7,6 @@ import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableCompletableObserver;
 
-/**
- * Created by Андрей Евтухов on 09.04.2018.
- */
-
 public class AuthorizationInteractor extends BaseInteractor {
 
     private final AuthorizationUseCase authorizationUseCase;

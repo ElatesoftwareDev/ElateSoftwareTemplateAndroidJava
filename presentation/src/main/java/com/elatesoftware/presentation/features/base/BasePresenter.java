@@ -7,16 +7,12 @@ import com.elatesoftware.presentation.utils.ErrorHandler;
 
 import javax.inject.Inject;
 
-/**
- * Created by Андрей Евтухов on 12.04.2018.
- */
-
 abstract public class BasePresenter<V extends BaseView> extends MvpPresenter<V> implements ErrorHandler.ErrorHandlerCallback {
 
     @Inject
     protected Context context;
 
-    ErrorHandler errorHandler;
+    private ErrorHandler errorHandler;
 
     @Override
     protected void onFirstViewAttach() {

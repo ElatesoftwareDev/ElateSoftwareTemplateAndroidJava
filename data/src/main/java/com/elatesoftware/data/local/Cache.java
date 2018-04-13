@@ -4,10 +4,6 @@ import com.elatesoftware.data.local.preferences.IPreferencesStorage;
 
 import javax.inject.Inject;
 
-/**
- * Created by Андрей Евтухов on 11.04.2018.
- */
-
 public class Cache {
 
     private final IPreferencesStorage preferencesStorage;

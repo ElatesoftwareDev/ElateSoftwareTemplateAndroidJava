@@ -9,10 +9,6 @@ import com.elatesoftware.presentation.di.components.LaunchComponent;
 import com.elatesoftware.presentation.di.components.MainComponent;
 import com.elatesoftware.presentation.di.modules.AppModule;
 
-/**
- * Created by Андрей Евтухов on 10.04.2018.
- */
-
 public class Injector {
 
     private static final Injector injector = new Injector();

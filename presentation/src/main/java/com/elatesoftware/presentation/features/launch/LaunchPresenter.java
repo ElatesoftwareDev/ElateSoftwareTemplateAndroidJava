@@ -10,15 +10,11 @@ import com.elatesoftware.presentation.features.main.MainActivity;
 
 import javax.inject.Inject;
 
-/**
- * Created by Андрей Евтухов on 11.04.2018.
- */
-
 @PerActivity(LaunchActivity.class)
 @InjectViewState
 public class LaunchPresenter extends BasePresenter<LaunchView> {
 
-    private final LaunchInteractor interactor;
+    final LaunchInteractor interactor;
 
     @Inject
     LaunchPresenter(LaunchInteractor interactor) {

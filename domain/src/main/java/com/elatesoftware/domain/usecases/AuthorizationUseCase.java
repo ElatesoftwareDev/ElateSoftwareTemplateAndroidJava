@@ -9,9 +9,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Completable;
 
-/**
- * Created by Андрей Евтухов on 09.04.2018.
- */
 
 public class AuthorizationUseCase extends CompletableUseCase<AuthorizationUseCase.AuthorizationData> {
 

@@ -7,10 +7,6 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import butterknife.ButterKnife;
 
-/**
- * Created by Андрей Евтухов on 10.04.2018.
- */
-
 public abstract class BaseActivity extends MvpAppCompatActivity implements BaseView{
 
     @Override

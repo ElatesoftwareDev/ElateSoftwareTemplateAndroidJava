@@ -8,9 +8,6 @@ import javax.inject.Inject;
 import io.reactivex.Single;
 import retrofit2.Response;
 
-/**
- * Created by Андрей Евтухов on 09.04.2018.
- */
 
 public class RestApiService{
 
