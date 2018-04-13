@@ -6,9 +6,9 @@ import java.io.IOException;
  * Created by Андрей Евтухов on 12.04.2018.
  */
 
-public class ServerConnectionError extends IOException {
+public class ServerConnectionException extends IOException {
 
-    public ServerConnectionError(String message) {
+    public ServerConnectionException(String message) {
         super(message);
     }
 }

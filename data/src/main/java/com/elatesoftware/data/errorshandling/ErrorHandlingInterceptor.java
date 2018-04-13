@@ -7,7 +7,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 
 import javax.inject.Inject;
 
@@ -51,7 +53,9 @@ public class ErrorHandlingInterceptor implements Interceptor {
             }
             return response;
         } catch (SocketTimeoutException e) {
-            throw new ServerConnectionError(context.getString(R.string.error_handling_timeout));
+            throw new ServerConnectionException(context.getString(R.string.error_handling_timeout));
+        } catch (UnknownHostException | ConnectException e){
+            throw new ServerConnectionException(context.getString(R.string.error_no_connection));
         }
     }
 
@@ -65,7 +69,7 @@ public class ErrorHandlingInterceptor implements Interceptor {
             ResponseBody responseBody = response.body();
             if (responseBody != null) {
                 String errorBody = responseBody.string();
-                if (errorBody != null && errorBody.isEmpty()) {
+                if (errorBody != null && !errorBody.isEmpty()) {
                     ServerErrorBody error = gson.fromJson(errorBody, ServerErrorBody.class);
                     if (error != null) {
                         throw getExceptionFromError(error);
@@ -73,7 +77,7 @@ public class ErrorHandlingInterceptor implements Interceptor {
                 }
             }
             throw getUnknownInternalException();
-        } catch (JsonSyntaxException | IOException e) {
+        } catch (JsonSyntaxException e) {
             throw getUnknownInternalException();
         }
     }

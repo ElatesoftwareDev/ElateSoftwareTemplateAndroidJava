@@ -11,15 +11,25 @@ import javax.inject.Inject;
  * Created by Андрей Евтухов on 12.04.2018.
  */
 
-public class BasePresenter<V extends BaseView> extends MvpPresenter<V> {
+abstract public class BasePresenter<V extends BaseView> extends MvpPresenter<V> implements ErrorHandler.ErrorHandlerCallback {
 
     @Inject
     protected Context context;
-    @Inject
+
     ErrorHandler errorHandler;
 
-    protected void handleError(Throwable e) {
-        getViewState().showToast(errorHandler.getErrorMessage(e));
+    @Override
+    protected void onFirstViewAttach() {
+        super.onFirstViewAttach();
+        errorHandler = new ErrorHandler(context, this);
     }
 
+    protected void handleError(Throwable e) {
+        errorHandler.handleError(e);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        getViewState().showToast(message);
+    }
 }

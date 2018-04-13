@@ -1,7 +1,5 @@
 package com.elatesoftware.presentation.features.authemail;
 
-import android.content.Context;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.elatesoftware.domain.interactors.AuthorizationInteractor;
 import com.elatesoftware.presentation.di.Injector;
@@ -20,12 +18,10 @@ import io.reactivex.observers.DisposableCompletableObserver;
 public class AuthByEmailPresenter extends BasePresenter<AuthByEmailView> {
 
     private final AuthorizationInteractor interactor;
-    private final Context context;
 
     @Inject
-    AuthByEmailPresenter(AuthorizationInteractor interactor, Context context) {
+    AuthByEmailPresenter(AuthorizationInteractor interactor) {
         this.interactor = interactor;
-        this.context = context;
     }
 
     void login(String email, String password) {

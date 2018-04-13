@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class ServerErrorBody {
 
-    @SerializedName("message")
+    @SerializedName("Message")
     String message;
 
-    @SerializedName("code")
+    @SerializedName("Code")
     int code;
 
     public ServerErrorBody(String message, int code) {

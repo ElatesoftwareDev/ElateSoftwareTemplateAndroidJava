@@ -1,7 +1,5 @@
 package com.elatesoftware.presentation.features.launch;
 
-import android.content.Context;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.elatesoftware.domain.interactors.LaunchInteractor;
 import com.elatesoftware.presentation.di.Injector;
@@ -19,12 +17,10 @@ import javax.inject.Inject;
 @InjectViewState
 public class LaunchPresenter extends BasePresenter<LaunchView> {
 
-    private final Context context;
     private final LaunchInteractor interactor;
 
     @Inject
-    LaunchPresenter(Context context, LaunchInteractor interactor) {
-        this.context = context;
+    LaunchPresenter(LaunchInteractor interactor) {
         this.interactor = interactor;
     }
 
