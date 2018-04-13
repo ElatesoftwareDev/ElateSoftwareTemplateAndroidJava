@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name="com.elatesoftware.presentation.application.TemplateApplication"
+        android:name=".application.TemplateApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.elatesoftware.presentation.features.launch.LaunchActivity"
+            android:name=".features.launch.LaunchActivity"
             android:theme="@style/LaunchTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.elatesoftware.presentation.features.authemail.AuthByEmailActivity"/>
+        <activity android:name=".features.auth.mail.AuthByEmailActivity"/>
+        <activity android:name=".features.main.MainActivity"/>
 
     </application>
 

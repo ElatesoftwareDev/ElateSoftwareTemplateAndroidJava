@@ -6,6 +6,7 @@ import com.elatesoftware.presentation.di.components.AppComponent;
 import com.elatesoftware.presentation.di.components.AuthByEmailComponent;
 import com.elatesoftware.presentation.di.components.DaggerAppComponent;
 import com.elatesoftware.presentation.di.components.LaunchComponent;
+import com.elatesoftware.presentation.di.components.MainComponent;
 import com.elatesoftware.presentation.di.modules.AppModule;
 
 /**
@@ -17,8 +18,9 @@ public class Injector {
     private static final Injector injector = new Injector();
 
     private AppComponent appComponent;
-    private AuthByEmailComponent authByEmailComponent;
     private LaunchComponent launchComponent;
+    private AuthByEmailComponent authByEmailComponent;
+    private MainComponent mainComponent;
 
     public static Injector getInstance() {
         return injector;
@@ -57,6 +59,18 @@ public class Injector {
 
     public void clearLaunchComponent() {
         launchComponent = null;
+    }
+
+    public MainComponent plusMainComponent() {
+        if (mainComponent == null) {
+            plusLaunchComponent();
+            mainComponent = launchComponent.plusMainComponent();
+        }
+        return mainComponent;
+    }
+
+    public void clearMainComponent() {
+        mainComponent = null;
     }
 
 

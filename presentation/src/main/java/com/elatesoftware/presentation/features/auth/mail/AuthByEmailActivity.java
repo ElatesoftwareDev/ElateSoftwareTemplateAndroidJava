@@ -1,4 +1,4 @@
-package com.elatesoftware.presentation.features.authemail;
+package com.elatesoftware.presentation.features.auth.mail;
 
 import android.content.Context;
 import android.content.Intent;

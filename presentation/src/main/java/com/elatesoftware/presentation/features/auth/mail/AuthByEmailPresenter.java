@@ -1,4 +1,4 @@
-package com.elatesoftware.presentation.features.authemail;
+package com.elatesoftware.presentation.features.auth.mail;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.elatesoftware.domain.interactors.AuthorizationInteractor;
@@ -44,12 +44,8 @@ public class AuthByEmailPresenter extends BasePresenter<AuthByEmailView> {
         return true;
     }
 
-    private void onErrorLogin() {
-        getViewState().showToast("Неуспешный неуспех");
-    }
-
     private void onSuccessLogin() {
-        getViewState().showToast("Успешный успех");
+        getViewState().showToast("Success");
     }
 
     @Override

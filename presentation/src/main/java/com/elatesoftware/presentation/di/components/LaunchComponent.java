@@ -17,5 +17,7 @@ public interface LaunchComponent {
     void inject(LaunchActivity activity);
 
     AuthByEmailComponent plusAuthByEmailComponent();
+
+    MainComponent plusMainComponent();
 }
 

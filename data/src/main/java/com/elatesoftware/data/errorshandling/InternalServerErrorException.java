@@ -11,7 +11,7 @@ public class InternalServerErrorException extends IOException {
     private String internalMessage;
     private String publicMessage;
 
-    public InternalServerErrorException(String internalMessage, String publicMessage) {
+    InternalServerErrorException(String internalMessage, String publicMessage) {
         this.internalMessage = internalMessage;
         this.publicMessage = publicMessage;
     }

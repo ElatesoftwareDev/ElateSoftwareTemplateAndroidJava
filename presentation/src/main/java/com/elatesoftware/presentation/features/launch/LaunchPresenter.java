@@ -4,8 +4,9 @@ import com.arellomobile.mvp.InjectViewState;
 import com.elatesoftware.domain.interactors.LaunchInteractor;
 import com.elatesoftware.presentation.di.Injector;
 import com.elatesoftware.presentation.di.scopeannotations.PerActivity;
-import com.elatesoftware.presentation.features.authemail.AuthByEmailActivity;
+import com.elatesoftware.presentation.features.auth.mail.AuthByEmailActivity;
 import com.elatesoftware.presentation.features.base.BasePresenter;
+import com.elatesoftware.presentation.features.main.MainActivity;
 
 import javax.inject.Inject;
 
@@ -32,7 +33,7 @@ public class LaunchPresenter extends BasePresenter<LaunchView> {
 
     private void showNextActivity() {
         if (interactor.isAuth()) {
-            getViewState().startNextActivity(AuthByEmailActivity.getActivityIntent(context));
+            getViewState().startNextActivity(MainActivity.getActivityIntent(context));
         } else {
             getViewState().startNextActivity(AuthByEmailActivity.getActivityIntent(context));
         }

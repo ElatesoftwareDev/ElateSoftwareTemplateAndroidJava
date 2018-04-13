@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ServerConnectionException extends IOException {
 
-    public ServerConnectionException(String message) {
+    ServerConnectionException(String message) {
         super(message);
     }
 }
