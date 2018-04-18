@@ -11,5 +11,7 @@ import dagger.Subcomponent;
 public interface MainComponent {
 
     void inject(MainActivity activity);
+
+    ChatComponent plusChatComponent();
 }
 

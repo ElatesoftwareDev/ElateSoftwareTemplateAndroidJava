@@ -3,4 +3,6 @@
     <color name="colorPrimary">#696969</color>
     <color name="colorPrimaryDark">#202020</color>
     <color name="colorAccent">#8cb334</color>
+
+    <color name="color_text_on_dark">#fff</color>
 </resources>
