@@ -1,4 +1,4 @@
-package com.elatesoftware.presentation.features.chat;
+package com.elatesoftware.presentation.features.description;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.elatesoftware.presentation.di.Injector;
@@ -8,14 +8,14 @@ import com.elatesoftware.presentation.features.base.BasePresenter;
 import javax.inject.Inject;
 
 @InjectViewState
-@PerFragment(ChatFragment.class)
-public class ChatPresenter extends BasePresenter<ChatView> {
+@PerFragment(DescriptionFragment.class)
+public class DescriptionPresenter extends BasePresenter<DescriptionView> {
 
     @Inject
-    ChatPresenter() { }
+    DescriptionPresenter() { }
 
     @Override
     protected void clearComponent() {
-        Injector.getInstance().clearChatComponent();
+        Injector.getInstance().clearDescriptionComponent();
     }
 }

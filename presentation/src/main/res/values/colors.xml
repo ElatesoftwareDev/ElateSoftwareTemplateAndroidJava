@@ -5,4 +5,7 @@
     <color name="colorAccent">#8cb334</color>
 
     <color name="color_text_on_dark">#fff</color>
+
+    <color name="chat_background">#229999</color>
+    <color name="description_background">#550000</color>
 </resources>

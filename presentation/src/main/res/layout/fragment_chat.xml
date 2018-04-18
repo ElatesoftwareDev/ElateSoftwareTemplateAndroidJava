@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#229999"
+    android:background="@color/chat_background"
     tools:context="com.elatesoftware.presentation.features.chat.ChatFragment">
 
     <TextView
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="match_parent"
-        android:text="Здесь будет чат"/>
+        android:textColor="@color/color_text_on_dark"
+        android:text="@string/chat_mock"/>
 
 </FrameLayout>

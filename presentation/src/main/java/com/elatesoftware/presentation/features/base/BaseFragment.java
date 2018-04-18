@@ -1,6 +1,6 @@
 package com.elatesoftware.presentation.features.base;
 
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,10 +10,15 @@ import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends MvpAppCompatFragment implements BaseView {
+public abstract class BaseFragment extends MvpAppCompatFragment implements BaseFragmentView {
+
+    @Inject
+    protected Context context;
 
     private Unbinder unbinder;
 
@@ -39,16 +44,16 @@ public abstract class BaseFragment extends MvpAppCompatFragment implements BaseV
 
     @Override
     public void showActivity(Intent intent) {
-        getContext().startActivity(intent);
+        context.startActivity(intent);
     }
 
     @Override
     public void showToast(String message) {
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showToast(int resId) {
-        Toast.makeText(getContext(), resId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, resId, Toast.LENGTH_SHORT).show();
     }
 }

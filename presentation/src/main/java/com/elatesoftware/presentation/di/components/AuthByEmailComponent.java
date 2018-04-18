@@ -2,7 +2,7 @@ package com.elatesoftware.presentation.di.components;
 
 import com.elatesoftware.presentation.features.auth.mail.AuthByEmailActivity;
 import com.elatesoftware.presentation.di.modules.AuthByEmailModule;
-import com.elatesoftware.presentation.di.scopeannotations.PerActivity;
+import com.elatesoftware.presentation.di.annotations.PerActivity;
 
 import dagger.Subcomponent;
 

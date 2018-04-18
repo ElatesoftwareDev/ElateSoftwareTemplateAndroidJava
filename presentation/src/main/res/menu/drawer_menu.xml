@@ -2,7 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_description"
+            android:title="@string/menu_description" />
+        <item
             android:id="@+id/nav_chat"
-            android:title="Чат" />
+            android:title="@string/menu_chat" />
     </group>
 </menu>

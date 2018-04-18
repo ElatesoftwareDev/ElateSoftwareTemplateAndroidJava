@@ -1,4 +1,4 @@
-package com.elatesoftware.presentation.di.scopeannotations;
+package com.elatesoftware.presentation.di.annotations;
 
 import java.lang.annotation.Retention;
 

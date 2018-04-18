@@ -1,8 +1,5 @@
 package com.elatesoftware.presentation.di.modules;
 
-
-import android.content.Context;
-
 import com.elatesoftware.data.errorshandling.ErrorHandlingInterceptor;
 import com.elatesoftware.data.network.api.RestApi;
 import com.elatesoftware.presentation.BuildConfig;

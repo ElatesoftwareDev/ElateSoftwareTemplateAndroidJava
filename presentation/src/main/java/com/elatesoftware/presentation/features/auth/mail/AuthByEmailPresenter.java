@@ -3,7 +3,7 @@ package com.elatesoftware.presentation.features.auth.mail;
 import com.arellomobile.mvp.InjectViewState;
 import com.elatesoftware.domain.interactors.AuthorizationInteractor;
 import com.elatesoftware.presentation.di.Injector;
-import com.elatesoftware.presentation.di.scopeannotations.PerActivity;
+import com.elatesoftware.presentation.di.annotations.PerActivity;
 import com.elatesoftware.presentation.features.base.BasePresenter;
 
 import javax.inject.Inject;
