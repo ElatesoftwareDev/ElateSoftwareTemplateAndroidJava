@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
-
+@Singleton
 public class PreferencesStorage implements IPreferencesStorage {
 
     private static final String PREFERENCES_APP = "com.elatesoftware.template.PREFERENCES_APP";

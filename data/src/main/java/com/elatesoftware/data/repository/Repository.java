@@ -5,10 +5,11 @@ import com.elatesoftware.data.network.api.RestApiService;
 import com.elatesoftware.domain.repository.IRepository;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Completable;
 
-
+@Singleton
 public class Repository implements IRepository {
 
     private final RestApiService networkRepository;

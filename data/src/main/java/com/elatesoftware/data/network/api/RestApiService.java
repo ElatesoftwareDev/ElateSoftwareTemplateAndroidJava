@@ -5,11 +5,12 @@ import com.elatesoftware.domain.entities.LoginBody;
 import com.elatesoftware.domain.entities.UserResponse;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Single;
 import retrofit2.Response;
 
-
+@Singleton
 public class RestApiService{
 
     private final RestApi restApi;

@@ -3,7 +3,9 @@ package com.elatesoftware.data.local;
 import com.elatesoftware.data.local.preferences.IPreferencesStorage;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class Cache {
 
     private final IPreferencesStorage preferencesStorage;
