@@ -20,11 +20,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+import static java.net.HttpURLConnection.HTTP_BAD_REQUEST;
+import static java.net.HttpURLConnection.HTTP_INTERNAL_ERROR;
+
 @Singleton
 public class ErrorHandlingInterceptor implements Interceptor {
-
-    private static final int HTTP_CLIENT_ERROR_CODE = 400;
-    private static final int HTTP_SERVER_ERROR_CODE = 500;
 
     private static final int INTERNAL_EMAIL_OR_PASSWORD_IS_INCORRECT = 106;
 
@@ -44,9 +44,9 @@ public class ErrorHandlingInterceptor implements Interceptor {
             okhttp3.Response response = chain.proceed(request);
             if (!response.isSuccessful()) {
                 switch (response.code()) {
-                    case HTTP_CLIENT_ERROR_CODE:
+                    case HTTP_BAD_REQUEST:
                         handleClientError(response);
-                    case HTTP_SERVER_ERROR_CODE:
+                    case HTTP_INTERNAL_ERROR:
                         handleServerError();
                 }
             }
@@ -92,6 +92,6 @@ public class ErrorHandlingInterceptor implements Interceptor {
     }
 
     private IOException getUnknownInternalException() {
-        return new UnhandledInternalServerException();
+        return new UnknownInternalServerException();
     }
 }

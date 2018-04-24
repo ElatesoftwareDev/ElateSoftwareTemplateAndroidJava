@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 import com.elatesoftware.data.errorshandling.InternalServerErrorException;
 import com.elatesoftware.data.errorshandling.ServerConnectionException;
-import com.elatesoftware.data.errorshandling.UnhandledInternalServerException;
+import com.elatesoftware.data.errorshandling.UnknownInternalServerException;
 import com.elatesoftware.data.errorshandling.UnknownServerException;
 import com.elatesoftware.presentation.R;
 
@@ -30,14 +30,14 @@ public class ErrorHandler {
             onInternalServerError((InternalServerErrorException) throwable);
         } else if (throwable instanceof ServerConnectionException) {
             onServerConnectionError((ServerConnectionException) throwable);
-        } else if (throwable instanceof UnhandledInternalServerException) {
-            onUnhandledInternalServerException();
+        } else if (throwable instanceof UnknownInternalServerException) {
+            onUnknownInternalServerError();
         } else if (throwable instanceof UnknownServerException) {
             onUnknownServerError((UnknownServerException) throwable);
         } else if (throwable instanceof IOException) {
             onUnknownIoException();
         } else if (throwable instanceof Exception) {
-            onUnknownException((Exception) throwable);
+            onUnknownException();
         }
     }
 
@@ -48,7 +48,7 @@ public class ErrorHandler {
             if (!TextUtils.isEmpty(e.getInternalMessage())) {
                 errorHandlerCallback.showMessage(e.getInternalMessage());
             } else {
-                onUnhandledInternalServerException();
+                onUnknownInternalServerError();
             }
         }
     }
@@ -57,27 +57,27 @@ public class ErrorHandler {
         if (!TextUtils.isEmpty(e.getMessage())) {
             errorHandlerCallback.showMessage(e.getMessage());
         } else {
-            onUnhandledInternalServerException();
+            onUnknownInternalServerError();
         }
-    }
-
-    private void onUnhandledInternalServerException() {
-        errorHandlerCallback.showMessage(context.getString(R.string.error_unhandled_server_error));
     }
 
     private void onUnknownServerError(UnknownServerException e) {
         if (!TextUtils.isEmpty(e.getMessage())) {
             errorHandlerCallback.showMessage(e.getMessage());
         } else {
-            onUnhandledInternalServerException();
+            onUnknownInternalServerError();
         }
+    }
+
+    private void onUnknownInternalServerError() {
+        errorHandlerCallback.showMessage(context.getString(R.string.error_unhandled_server_error));
     }
 
     private void onUnknownIoException() {
         errorHandlerCallback.showMessage(context.getString(R.string.error_ioexception));
     }
 
-    private void onUnknownException(Exception e) {
+    private void onUnknownException() {
         errorHandlerCallback.showMessage(context.getString(R.string.error_unhandled_error));
     }
 }
