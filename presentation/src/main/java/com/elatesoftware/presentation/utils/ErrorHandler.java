@@ -5,12 +5,11 @@ import android.text.TextUtils;
 
 import com.elatesoftware.data.errorshandling.InternalServerErrorException;
 import com.elatesoftware.data.errorshandling.ServerConnectionException;
+import com.elatesoftware.data.errorshandling.UnhandledInternalServerException;
 import com.elatesoftware.data.errorshandling.UnknownServerException;
 import com.elatesoftware.presentation.R;
 
 import java.io.IOException;
-
-import javax.inject.Inject;
 
 public class ErrorHandler {
 
@@ -31,25 +30,25 @@ public class ErrorHandler {
             onInternalServerError((InternalServerErrorException) throwable);
         } else if (throwable instanceof ServerConnectionException) {
             onServerConnectionError((ServerConnectionException) throwable);
+        } else if (throwable instanceof UnhandledInternalServerException) {
+            onUnhandledInternalServerException();
         } else if (throwable instanceof UnknownServerException) {
-            onUnknownServerError((UnknownServerException)throwable);
+            onUnknownServerError((UnknownServerException) throwable);
         } else if (throwable instanceof IOException) {
-            onUnknownIoException((IOException)throwable);
+            onUnknownIoException();
         } else if (throwable instanceof Exception) {
             onUnknownException((Exception) throwable);
         }
     }
 
     private void onInternalServerError(InternalServerErrorException e) {
-        if(!TextUtils.isEmpty(e.getPublicMessage())) {
+        if (!TextUtils.isEmpty(e.getPublicMessage())) {
             errorHandlerCallback.showMessage(e.getPublicMessage());
-        }
-        else {
-            if(!TextUtils.isEmpty(e.getInternalMessage())){
+        } else {
+            if (!TextUtils.isEmpty(e.getInternalMessage())) {
                 errorHandlerCallback.showMessage(e.getInternalMessage());
-            }
-            else {
-                onUnknownIoException(e);
+            } else {
+                onUnhandledInternalServerException();
             }
         }
     }
@@ -57,23 +56,25 @@ public class ErrorHandler {
     private void onServerConnectionError(ServerConnectionException e) {
         if (!TextUtils.isEmpty(e.getMessage())) {
             errorHandlerCallback.showMessage(e.getMessage());
+        } else {
+            onUnhandledInternalServerException();
         }
-        else {
-            onUnknownIoException(e);
-        }
+    }
+
+    private void onUnhandledInternalServerException() {
+        errorHandlerCallback.showMessage(context.getString(R.string.error_unhandled_server_error));
     }
 
     private void onUnknownServerError(UnknownServerException e) {
         if (!TextUtils.isEmpty(e.getMessage())) {
             errorHandlerCallback.showMessage(e.getMessage());
-        }
-        else {
-            onUnknownIoException(e);
+        } else {
+            onUnhandledInternalServerException();
         }
     }
 
-    private void onUnknownIoException(IOException e) {
-        errorHandlerCallback.showMessage(context.getString(R.string.error_server_interaction));
+    private void onUnknownIoException() {
+        errorHandlerCallback.showMessage(context.getString(R.string.error_ioexception));
     }
 
     private void onUnknownException(Exception e) {

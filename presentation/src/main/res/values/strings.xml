@@ -10,6 +10,7 @@
     <string name="menu_description">Description</string>
     <string name="menu_chat">Chat</string>
 
+    <string name="error_unhandled_server_error">Unhandled internal server error</string>
     <string name="error_ioexception">Input/Output error</string>
     <string name="error_unhandled_error">Unhandled error. Please contact the developer.</string>
     <string name="chat_mock">Chat here</string>

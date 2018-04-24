@@ -92,7 +92,6 @@ public class ErrorHandlingInterceptor implements Interceptor {
     }
 
     private IOException getUnknownInternalException() {
-        return new IOException(context.getString(R.string.error_unhandled_server_error));
+        return new UnhandledInternalServerException();
     }
-
 }
