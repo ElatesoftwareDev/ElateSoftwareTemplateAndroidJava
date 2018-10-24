@@ -7,6 +7,8 @@ import com.elatesoftware.domain.usecases.base.ObservableUseCase;
 import com.elatesoftware.domain.usecases.base.SingleUseCase;
 
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -21,7 +23,6 @@ public abstract class BaseInteractor {
     }
 
 
-    //todo Добавить actions чтобы не передавать DisposableObservable
     protected <InParam, OutParam> void execute(ObservableUseCase<InParam, OutParam> useCase, InParam inParam,
                                                DisposableObserver<OutParam> observer) {
         disposables.add(useCase.execute(inParam).subscribeWith(observer));
@@ -32,6 +33,21 @@ public abstract class BaseInteractor {
                                      DisposableCompletableObserver observer) {
 
         disposables.add(useCase.execute(inParam).subscribeWith(observer));
+    }
+
+    protected <InParam, OutParam> void execute(ObservableUseCase<InParam, OutParam> useCase, InParam inParam,
+                                               Consumer<OutParam> onNext) {
+        disposables.add(useCase.execute(inParam).subscribe(onNext));
+    }
+
+    protected <InParam, OutParam> void execute(ObservableUseCase<InParam, OutParam> useCase, InParam inParam,
+                                               Consumer<OutParam> onNext, Consumer<Throwable> onError) {
+        disposables.add(useCase.execute(inParam).subscribe(onNext, onError));
+    }
+
+    protected <InParam, OutParam> void execute(ObservableUseCase<InParam, OutParam> useCase, InParam inParam,
+                                               Consumer<OutParam> onNext, Consumer<Throwable> onError, Action onComplete) {
+        disposables.add(useCase.execute(inParam).subscribe(onNext, onError, onComplete));
     }
 
 
